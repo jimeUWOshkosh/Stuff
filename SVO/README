@@ -1,0 +1,25 @@
+
+I did a 'proof of concept' on Ovid's Declarative Perl.
+
+1) Didn't use constructors like Ovid did
+     CP > 'Area' is a constructor for a Veure::Economy::Asset::Area instance...
+   Didn't know how to do it so I just made lib/AssetSteps.pl
+
+2) I used a source filter, "Filter::Simple", lib/myfilter.pm 
+
+To execute
+	perl run.pl
+
+
+├── README
+├── run.pl
+└─── lib
+    ├── AssetSteps.pl
+    ├── myfilter.pm
+    ├── PurchaseClones.pm
+    ├── Steps.pl
+    └── V
+        ├── Area.pm
+        ├── Clone.pm
+        ├── Location.pm
+        └── Wallet.pm
