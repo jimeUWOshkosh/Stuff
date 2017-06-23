@@ -30,7 +30,8 @@ sub find_always {
    foreach my $i (@objects) {
       if (ref ($i) eq 'ARRAY') {
 	      if ($i->[0] eq 'ALWAYS') {
-	         print "@$i\n";
+		 my $eles = scalar @$i;
+		 $i->[1](@{$i}[2..$eles]);
 	      }
       }
    }
@@ -41,7 +42,8 @@ sub find_failure {
    foreach my $i (@objects) {
       if (ref ($i) eq 'ARRAY') {
 	      if ($i->[0] eq 'FAILURE') {
-	         print "@$i\n";
+		 my $eles = scalar @$i;
+		 $i->[1](@{$i}[2..$eles]);
 	      }
       }
    }

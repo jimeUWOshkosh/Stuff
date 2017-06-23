@@ -34,12 +34,12 @@ sub station_area {
    return 1;
 }
 
+use myfilter;
 sub purchase_clone {
    say 'purchase_clone';
    my ($self) = @_;
    my $character = "and Irvine";
    my $bet_amount = 1_000_006;
-   use myfilter;
    my $exchange = PurchaseClones::new_exchange(
       slug            => 'purchase-clone',
       success_message => 'You have purchased a new clone',
@@ -48,11 +48,10 @@ sub purchase_clone {
                   Location( $self      => is_in_area   => 'clonevat'              ),
                   Wallet(   $self      => pay          => $self->price('cloning') ),
                   Clone(    $self      => gestate      => $self->station_area     ),
-	 FAILURE( Wallet(   $character => remove       => $bet_amount ) ),
-	 ALWAYS( Wallet( $character => show_balance ) ),
+         FAILURE( Wallet(   $character => remove       => $bet_amount ) ),
+         ALWAYS( Wallet( $character => show_balance ) ),
       ),
    );
-   no myfilter;
    return $exchange->attempt;
 }
 1;

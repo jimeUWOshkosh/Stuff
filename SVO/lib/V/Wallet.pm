@@ -8,4 +8,7 @@ has key => (
 sub pay {
    return 1;
 }
+sub show_balance {
+   say 'what balance';
+}
 1;
