@@ -11,4 +11,6 @@ sub pay {
 sub show_balance {
    say 'what balance';
 }
+sub Wallet {
+}
 1;

@@ -2,7 +2,7 @@ use strict; use warnings;
 package PurchaseClones;
 use feature 'say';
 use Moo;
-
+#extends 'V::Location', 'V::Area', 'V::Clone', 'V::Wallet';
 
 require "AssetSteps.pl";
 require "Steps.pl";

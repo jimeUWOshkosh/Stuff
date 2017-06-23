@@ -8,4 +8,6 @@ has key => (
 sub is_in {
    return 1;
 }
+sub Area {
+}
 1;

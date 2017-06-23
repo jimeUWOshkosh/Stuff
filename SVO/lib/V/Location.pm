@@ -8,4 +8,6 @@ has key => (
 sub is_in_area {
    return 1;
 }
+sub Location {
+}
 1;
