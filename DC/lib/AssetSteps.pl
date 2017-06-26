@@ -1,3 +1,4 @@
+use strict; use warnings;
 use V::Area;
 use V::Clone;
 use V::Location;

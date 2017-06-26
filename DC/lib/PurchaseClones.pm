@@ -2,18 +2,17 @@ use strict; use warnings;
 package PurchaseClones;
 use feature 'say';
 use Moo;
-#extends 'V::Location', 'V::Area', 'V::Clone', 'V::Wallet';
-
-require "AssetSteps.pl";
-require "Steps.pl";
-
 
 has key => (
    is      => 'rw',
    default => undef,
 );
 
+require "AssetSteps.pl";
+require "Steps.pl";
+
 sub attempt {
+   say "Attempt";
    return 1;
 }
 
@@ -40,7 +39,7 @@ sub purchase_clone {
    my ($self) = @_;
    my $character = "and Irvine";
    my $bet_amount = 1_000_006;
-   my $exchange = PurchaseClones::new_exchange(
+   my $exchange = new_exchange(
       slug            => 'purchase-clone',
       success_message => 'You have purchased a new clone',
       failure_message => 'You could not purchase a new clone',
@@ -51,7 +50,6 @@ sub purchase_clone {
          FAILURE( Wallet(   $character => remove       => $bet_amount ) ),
          ALWAYS( Wallet( $character => show_balance ) ),
       ),
-   );
-   return $exchange->attempt;
+   )->attempt;
 }
 1;

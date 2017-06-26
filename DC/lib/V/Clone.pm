@@ -1,13 +1,12 @@
-package V::Location;
+package V::Clone;
 use strict; use warnings; use feature 'say'; use Moo;
 
 has key => (
    is      => 'rw',
    default => undef,
 );
-sub is_in_area {
+sub gestate {
+   say "\tgestate";
    return 1;
-}
-sub Location {
 }
 1;

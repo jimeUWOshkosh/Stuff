@@ -1,16 +1,12 @@
-package V::Wallet;
+package V::Area;
 use strict; use warnings; use feature 'say'; use Moo;
 
 has key => (
    is      => 'rw',
    default => undef,
 );
-sub pay {
+sub is_in {
+   say "\tis_in";
    return 1;
-}
-sub show_balance {
-   say 'what balance';
-}
-sub Wallet {
 }
 1;
