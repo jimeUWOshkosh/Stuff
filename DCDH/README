@@ -21,4 +21,36 @@ Edit each of the JT scripts to use the correct Schema.
   Execute SQL from 03_prepare_upgrade.pl 
 05_downgrade.pl 
   Backout most recent RDBMS changes
+----================================------------------------------
 
+How I use JT's scripts with my development platform
+
+Disclaimer: where you store and name your database is up to you!!!
+
+$ rm db/up.db
+$ sqlite3 db/up.db <db/create.sql
+$ cd lib/{PROJECT}
+$ rm -rf Schema Schema.pm
+$ cd ../..
+$ bash db/dbicdump.sh
+
+$ vi lib/Up/Schema.pm
+   insert
+
+our $VERSION = 1;
+
+   in the modify section
+
+$ bash myscripts/dcdh/restart.sh
+$ sqlite3 db/up.db <db/drop.sql
+$ perl myscripts/dcdh/01_prepare_init.pl
+$ perl myscripts/dcdh/02_init.pl
+
+---- dbicdump.sh --------
+# run from project home directory
+dbicdump -o dump_directory=./lib \
+             -o components='["InflateColumn::DateTime"]' \
+             -o debug=1 \
+             Up::Schema \
+             'dbi:SQLite:./db/up.db' 
+---eof----
